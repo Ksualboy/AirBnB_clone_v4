@@ -1,14 +1,23 @@
 window.onload = function() {
-    let amenities = {}; //dictionary
-    
+    let amenities = {};
+    let test = [];
 
-    
-
-    $( '.popover li input').on( 'click', function() {
-        if ($('input[type=checkbox]').prop(':checked')) {
-              alert($('.popover li').attr('data-name') + ' was checked');
+    $( '.amenities .popover li input').on( 'click', function() {
+        if ($(this).is(':checked')) {
+            amenities[$(this).parent().attr('data-id')] = $(this).parent().attr('data-name');
         } else {
-              alert($('.popover li').attr('data-name') + ' was unchecked');
+            delete amenities[$(this).parent().attr('data-id')];
         }
-      });
+
+        $('.amenities h4').text("");
+        $.each(amenities, function(index, value){
+            let last = amenities[Object.keys(amenities)[Object.keys(amenities).length - 1]]
+            if (value === last){
+                $('.amenities h4').append(value);
+            } else {
+                $('.amenities h4').append(value + ", ");
+            }
+        });
+
+    });
 };

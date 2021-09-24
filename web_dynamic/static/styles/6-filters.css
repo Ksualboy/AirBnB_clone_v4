@@ -46,6 +46,12 @@ button:hover {
     width: 25%;
     border-right: 1px solid #DDDDDD;
 }
+
+.amenities h4 {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .amenities {
     height: 100%;
     width: 25%;
@@ -76,6 +82,10 @@ button:hover {
 
 .amenities .popover ul{
     margin: 0px;
+}
+
+.amenities .popover ul li input{
+    margin-right:10px;
 }
 
 .locations .popover {
