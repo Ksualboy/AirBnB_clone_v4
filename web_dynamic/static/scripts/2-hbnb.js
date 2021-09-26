@@ -1,6 +1,5 @@
 window.onload = function () {
   const amenities = {};
-  const test = [];
 
   $('.amenities .popover li input').on('click', function () {
     if ($(this).is(':checked')) {

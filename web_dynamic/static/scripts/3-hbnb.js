@@ -1,6 +1,5 @@
 window.onload = function () {
   const amenities = {};
-  const test = [];
 
   $('.amenities .popover li input').on('click', function () {
     if ($(this).is(':checked')) {
@@ -41,13 +40,13 @@ async function setPlaces () {
   });
 
   $.each(places, async function (index, value) {
-    const user_data = await getFromApi(url + 'users/' + value.user_id, 'GET');
-    const first_name = user_data.first_name;
-    const last_name = user_data.last_name;
+    const userData = await getFromApi(url + 'users/' + value.user_id, 'GET');
+    const firstName = userData.first_name;
+    const lastName = userData.last_name;
     const html = `<article>
                       <div class='title_box'>
                         <h2>${value.name}</h2>
-                        <div class='price_by_night'>\$${value.price_by_night}</div>
+                        <div class='price_by_night'>$${value.price_by_night}</div>
                       </div>
                       <div class='information'>
                         <div class='max_guest'>${value.max_guest} ${value.max_guest > 1 ? 'Guests' : 'Guest'}</div>
@@ -55,7 +54,7 @@ async function setPlaces () {
                             <div class='number_bathrooms'>${value.number_bathrooms} ${value.number_bathrooms > 1 ? 'Bathrooms' : 'Bathroom'}</div>
                       </div>
                       <div class='user'>
-                        <b>Owner:</b> ${first_name} ${last_name}
+                        <b>Owner:</b> ${firstName} ${lastName}
                       </div>
                       <div class='description'>
                         ${value.description}
