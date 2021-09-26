@@ -21,7 +21,7 @@ window.onload = function() {
 
     });
 
-    $.getJSON('http://da20cd38220f.4fd667c2.hbtn-cod.io:5001/api/v1/status/', function (data, textStatus, jqXHR) {
+    $.getJSON('http://0.0.0.0:5001/api/v1/status/', function (data, textStatus, jqXHR) {
 
         if (data.status === "OK") {
             $('DIV#api_status').addClass('available');

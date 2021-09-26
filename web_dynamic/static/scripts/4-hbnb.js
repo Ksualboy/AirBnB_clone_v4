@@ -1,6 +1,5 @@
 window.onload = function() {
     let amenities = {};
-    let test = [];
 
     $( '.amenities .popover li input').on( 'click', function() {
         if ($(this).is(':checked')) {
@@ -31,12 +30,23 @@ window.onload = function() {
 
     });
 
-    setPlaces(); //this should work
+    setPlaces('{}'); //this should work
+
+    $('.filters button').click(function() {
+        let amenities_ids = [];
+        $.each(amenities, function(index,value) {
+            amenities_ids.push(index);
+        });
+        setPlaces(JSON.stringify({amenities: amenities_ids}));
+    });
+
 };
 
-async function setPlaces () {
+async function setPlaces (dict) {
+    $('section.places').html('');
     const url = 'http://0.0.0.0:5001/api/v1/';
-    const places = await getFromApi(url + 'places_search/', 'POST', '{}');
+    const places = await getFromApi(url + 'places_search/', 'POST', dict);
+
     places.sort(function(a, b){
         if(a.name < b.name) { return -1; }
         if(a.name > b.name) { return 1; }
@@ -77,4 +87,3 @@ function getFromApi (url, type, data = '') {
         contentType:'application/json',
     }));
 };
-
