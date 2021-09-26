@@ -56,7 +56,7 @@ async function setPlaces (dict) {
     const html = `<article>
                       <div class='title_box'>
                         <h2>${value.name}</h2>
-                        <div class='price_by_night'>\$${value.price_by_night}</div>
+                        <div class='price_by_night'>$${value.price_by_night}</div>
                       </div>
                       <div class='information'>
                         <div class='max_guest'>${value.max_guest} ${value.max_guest > 1 ? 'Guests' : 'Guest'}</div>
